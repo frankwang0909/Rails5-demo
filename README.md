@@ -28,6 +28,12 @@ Database adapter          sqlite3
 
 * How to run the test suite
 
+run unit test
+
+```shell
+bin/rails test:models
+```
+
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
