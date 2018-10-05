@@ -53,4 +53,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to products_url
   end
+
+  test "product is not valid without a unique title" do
+    product =  Product.new(
+      title: products(:ruby).title,
+      description: "yyy",
+      price: 1,
+      image_url: "ruby.png"
+    )
+    assert product.invalid?
+    assert_equal ["has already been taken"], product.errors[:title]
+  end
 end
