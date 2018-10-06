@@ -24,6 +24,38 @@ Database adapter          sqlite3
 
 * Database creation
 
+migrate
+
+```shell
+bin/rails db:migrate
+
+== 20181006073835 CombineItemsInCart: migrating ===============================
+== 20181006073835 CombineItemsInCart: migrated (0.0978s) ======================
+```
+
+rollback
+
+```shell
+bin/rails db:rollback
+
+== 20181006073835 CombineItemsInCart: reverting ===============================
+== 20181006073835 CombineItemsInCart: reverted (0.1615s) ======================
+```
+
+```shell
+bin/rails db:migrate:status
+
+database: /home/wxf/work/shopping/db/development.sqlite3
+
+ Status   Migration ID    Migration Name
+--------------------------------------------------
+   up     20181005064649  Create products
+   up     20181006062429  Create carts
+   up     20181006063326  Create line items
+   up     20181006072930  Add quantity to line items
+  down    20181006073835  Combine items in cart
+```
+
 * Database initialization
 
 * How to run the test suite
