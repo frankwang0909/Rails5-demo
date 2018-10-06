@@ -17,15 +17,26 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create line_item" do
     assert_difference('LineItem.count') do
-      # post line_items_url, params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id } }
       post line_items_url, params: {  product_id: products(:ruby).id  }
     end
    
-    # assert_redirected_to line_item_url(LineItem.last)
     follow_redirect!
 
     assert_select 'h2', 'Your Cart'
-    assert_select '#main li', '1 × Programming Ruby 2.3.1'
+    assert_select '#cart tr td:nth-child(1)', '1 ×' 
+    assert_select '#cart tr td:nth-child(2)', 'Programming Ruby 2.3.1'
+    assert_select '#cart tr td:nth-child(3)', '$49.50'
+  end
+
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do
+      post line_items_url, params: {  product_id: products(:ruby).id }, xhr: true
+    end
+   
+    assert_response :success
+    assert_select_jquery :html, '#cart' do
+      assert_select 'tr#current_item td', /Programming Ruby 2.3.1/
+    end
   end
 
   test "should show line_item" do
@@ -39,10 +50,8 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update line_item" do
-    # patch line_item_url(@line_item), params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id } }
     patch line_item_url(@line_item),  params: { 
         line_item: { 
-          # cart_id: @line_item.cart_id, 
           product_id: @line_item.product_id 
         } 
       }
