@@ -17,6 +17,8 @@ Rack version              2.0.5
 * System dependencies
 
 ```code
+Operation System  Ubuntu 14.04.4 LTS
+
 Database adapter          sqlite3
 ```
 
