@@ -24,7 +24,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     # assert_redirected_to line_item_url(LineItem.last)
     follow_redirect!
 
-    assert_select 'h2', 'Your Pragmatic Cart'
+    assert_select 'h2', 'Your Cart'
     assert_select '#main li', '1 × Programming Ruby 2.3.1'
   end
 
