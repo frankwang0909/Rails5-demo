@@ -26,6 +26,7 @@ Database adapter          sqlite3
 
 * Database creation
 
+
 migrate
 
 ```shell
@@ -56,6 +57,32 @@ database: /home/wxf/work/shopping/db/development.sqlite3
    up     20181006063326  Create line items
    up     20181006072930  Add quantity to line items
   down    20181006073835  Combine items in cart
+```
+
+update table `line_items`
+
+```shell
+ bin/rails generate migration add_order_to_line_item order:references
+
+Running via Spring preloader in process 12827
+      invoke  active_record
+      create    db/migrate/20181006144305_add_order_to_line_item.rb
+```
+
+migrate:
+
+```shell
+bin/rails db:migrate
+
+== 20181006144213 CreateOrders: migrating =====================================
+-- create_table(:orders)
+   -> 0.0190s
+== 20181006144213 CreateOrders: migrated (0.0196s) ============================
+
+== 20181006144305 AddOrderToLineItem: migrating ===============================
+-- add_reference(:line_items, :order, {:foreign_key=>true})
+   -> 0.0075s
+== 20181006144305 AddOrderToLineItem: migrated (0.0077s) ======================
 ```
 
 * Database initialization
