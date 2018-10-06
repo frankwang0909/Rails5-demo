@@ -31,10 +31,27 @@ Database adapter          sqlite3
 run unit test
 
 ```shell
-bin/rails test:models
+bin/rails test
+```
+
+functional testing of Controllers
+
+```shell
+bin/rails test:controllers
 ```
 
 * Services (job queues, cache servers, search engines, etc.)
+
+```shell
+rails dev:cache
+
+# Development mode is now being cached.
+```
+
+```shell
+rails dev:cache
+# Development mode is no longer being cached.
+```
 
 * Deployment instructions
 
