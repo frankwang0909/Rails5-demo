@@ -16,13 +16,15 @@
     </div>
     <div id="columns">
       <div id="side">
-        <div id="cart" 
-          <% if @cart.line_items.empty? %>
-            style="display: none;"
-          <% end %>
-        >
-          <%= render @cart%>
-        </div>
+        <% if @cart %>
+          <div id="cart" 
+            <% if @cart.line_items.empty? %>
+              style="display: none;"
+            <% end %>
+          >
+            <%= render @cart%>
+          </div>
+        <% end %>
 
         <ul>
           <li><a href="/">Home</a></li>
