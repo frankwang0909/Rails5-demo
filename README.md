@@ -85,6 +85,41 @@ bin/rails db:migrate
 == 20181006144305 AddOrderToLineItem: migrated (0.0077s) ======================
 ```
 
+```shell
+wxf@ubuntu:~/work/shopping$ sqlite3 -line db/development.sqlite3
+SQLite version 3.8.2 2013-12-06 14:53:30
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+
+sqlite> select * from orders;
+
+        id = 1
+      name = Dave Thomas
+   address = 123 Main Street
+     email = Dave@example.com
+  pay_type = 0
+created_at = 2018-10-07 02:02:19.613480
+updated_at = 2018-10-07 02:02:19.613480
+
+sqlite> select * from line_items;
+
+        id = 60
+product_id = 4
+   cart_id =
+created_at = 2018-10-07 01:57:06.989442
+updated_at = 2018-10-07 02:02:19.616584
+  quantity = 2
+  order_id = 1
+
+        id = 61
+product_id = 3
+   cart_id =
+created_at = 2018-10-07 01:57:10.227145
+updated_at = 2018-10-07 02:02:19.619097
+  quantity = 2
+  order_id = 1
+```
+
 * Database initialization
 
 * How to run the test suite
