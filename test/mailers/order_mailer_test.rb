@@ -14,6 +14,8 @@ class OrderMailerTest < ActionMailer::TestCase
     assert_equal "Pragmatic Store Order Shipped", mail.subject
     assert_equal ["dave@example.org"], mail.to
     assert_equal ["depot@example.com"], mail.from
+    
+    # something wrong with the following assertion
     # assert_match /<td>1&times;<\/td>\s*<td>Programming Ruby 2.3<\/td>/, mail.body.encoded
   end
 
